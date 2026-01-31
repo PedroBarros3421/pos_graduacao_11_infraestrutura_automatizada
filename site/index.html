@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trabalho Final - Infraestrutura Automatizada</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #87ceeb 0%, #4682b4 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+
+      .container {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        max-width: 600px;
+        margin: 2rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin: 1.5rem 0 1rem 0;
+        color: #1e90ff;
+      }
+
+      .info {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 1.5rem;
+        border-radius: 15px;
+        margin: 1.5rem 0;
+        text-align: left;
+      }
+
+      .tech-stack {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 2rem 0;
+      }
+
+      .tech-item {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 1rem;
+        border-radius: 10px;
+        margin: 0.5rem;
+        min-width: 120px;
+        font-weight: bold;
+      }
+
+      .footer {
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      .emoji {
+        font-size: 1.2em;
+        margin: 0 0.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🚀 Infraestrutura Automatizada</h1>
+      <p><strong>Trabalho Final - Pedro Henrique Barros</strong></p>
+
+      <div class="info">
+        <h2>📋 Sobre o Projeto</h2>
+        <p>
+          <span class="emoji">🏗️</span> EC2 Ubuntu provisionado com
+          <strong>Terraform</strong>
+        </p>
+        <p>
+          <span class="emoji">⚙️</span> Apache configurado via
+          <strong>Ansible</strong>
+        </p>
+        <p>
+          <span class="emoji">🔄</span> Automação completa de infraestrutura
+        </p>
+        <!-- <p>
+          <span class="emoji">📅</span> Data de deploy:
+          <span id="deployDate"></span>
+        </p> -->
+      </div>
+
+      <h2>🛠️ Stack Utilizada</h2>
+      <div class="tech-stack">
+        <div class="tech-item">
+          <span class="emoji">☁️</span><br />
+          AWS EC2
+        </div>
+        <div class="tech-item">
+          <span class="emoji">🏗️</span><br />
+          Terraform
+        </div>
+        <div class="tech-item">
+          <span class="emoji">⚙️</span><br />
+          Ansible
+        </div>
+        <div class="tech-item">
+          <span class="emoji">🌐</span><br />
+          Apache2
+        </div>
+        <div class="tech-item">
+          <span class="emoji">🐧</span><br />
+          Ubuntu
+        </div>
+      </div>
+
+      <div class="info">
+        <h2>✅ Tarefas Executadas</h2>
+        <p>✓ apt update executado com privilégios root</p>
+        <p>✓ Apache2 instalado e configurado</p>
+        <p>✓ Página personalizada implantada</p>
+        <p>✓ Firewall configurado para HTTP/HTTPS</p>
+        <p>✓ Serviço Apache iniciado automaticamente</p>
+      </div>
+
+      <div class="footer">
+        <p>
+          🎓
+          <strong>Especialização em Engenharia de Software com DevOps</strong>
+        </p>
+        <p>🏫 Universidade de Fortaleza (UNIFOR)</p>
+        <p>👨‍💻 Desenvolvido por Pedro Henrique Barros</p>
+      </div>
+    </div>
+
+    <script>
+      // Adicionar data atual
+      document.getElementById('deployDate').textContent =
+        new Date().toLocaleString('pt-BR');
+
+      // Adicionar efeito de loading
+      document.addEventListener('DOMContentLoaded', function () {
+        const container = document.querySelector('.container');
+        container.style.opacity = '0';
+        container.style.transform = 'translateY(20px)';
+
+        setTimeout(() => {
+          container.style.transition = 'all 0.8s ease';
+          container.style.opacity = '1';
+          container.style.transform = 'translateY(0)';
+        }, 100);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+---
+- name: Configurar servidor Ubuntu com Apache
+  hosts: all
+  become: true
+  tasks:
+    - name: Atualizar cache e pacotes do sistema (apt update && apt upgrade)
+      apt:
+        update_cache: yes
+        upgrade: yes
+
+    - name: Instalar Apache2
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+
+    - name: Iniciar e habilitar Apache2
+      systemd:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Copiar página HTML personalizada
+      copy:
+        src: ../site/index.html
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: '0644'
+      notify: restart apache
+
+    - name: Configurar firewall para HTTP
+      ufw:
+        rule: allow
+        port: '80'
+        proto: tcp
+
+    - name: Configurar firewall para HTTPS
+      ufw:
+        rule: allow
+        port: '443'
+        proto: tcp
+
+    - name: Verificar status do Apache
+      command: systemctl status apache2
+      register: apache_status
+      changed_when: false
+
+    - name: Mostrar status do Apache
+      debug:
+        msg: '{{ apache_status.stdout_lines }}'
+
+    - name: Criar arquivo de validação
+      copy:
+        dest: '/home/{{ ansible_user }}/validacao_ansible.txt'
+        content: |
+          Ansible executado com sucesso!
+          Data: {{ ansible_date_time.date }} {{ ansible_date_time.time }}
+          Apache instalado e configurado
+          Página web disponível em: http://{{ ansible_default_ipv4.address }}
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+        mode: '0644'
+
+  handlers:
+    - name: restart apache
+      systemd:
+        name: apache2
+        state: restarted
