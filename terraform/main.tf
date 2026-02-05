@@ -8,18 +8,11 @@ resource "aws_security_group" "app_sg" {
     cidr_blocks = ["0.0.0.0/0"] # Permite HTTP de qualquer lugar
   }
 
-  # ingress {
-  #   from_port   = 2424
-  #   to_port     = 2424
-  #   protocol    = "tcp"
-  #   cidr_blocks = ["0.0.0.0/0"]
-  # }
-
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["200.17.34.9/32"] # Permite SSH apenas do meu IP público
+    cidr_blocks = ["177.37.136.147/32"] # Permite SSH apenas do meu IP público
   }
 
   egress {
