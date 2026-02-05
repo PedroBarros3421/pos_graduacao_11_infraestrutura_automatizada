@@ -21,7 +21,7 @@ O objetivo é criar uma instância EC2 Ubuntu na AWS e configurar um servidor Ap
 ## Estrutura do Projeto
 
 ```plaintext
-TrabFinal/
+Raiz/
 ├── terraform/           # Infraestrutura como código
 │   ├── main.tf
 │   ├── variables.tf
